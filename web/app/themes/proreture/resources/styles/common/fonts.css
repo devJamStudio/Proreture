@@ -1,0 +1,15 @@
+@font-face {
+  font-display: swap;
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  src: url('@fonts/Manrope-VariableFont_wght.ttf') format('ttf');
+}
+@font-face {
+  font-display: swap;
+  font-family: 'Fjalla One';
+  font-style: normal;
+  font-weight: 400;
+  src: url('@fonts/FjallaOne-Regular.ttf') format('ttf');
+}
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Inter:wght@400;700&family=Manrope:wght@200&family=Poppins&display=swap');
