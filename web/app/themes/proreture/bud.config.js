@@ -14,6 +14,7 @@ export default async (app) => {
    * @see {@link https://bud.js.org/docs/bud.assets}
    */
   app
+    .entry('swiperBundle', ['@scripts/swiperBundle', '@styles/swiperBundle'])
     .entry('app', ['@scripts/app', '@styles/app'])
     .entry('editor', ['@scripts/editor', '@styles/editor'])
     .assets(['images', 'svg'])
@@ -26,6 +27,7 @@ export default async (app) => {
    */
   app.setPublicPath('/app/themes/sage/public/');
 
+  app.compilePaths([app.path(`@src`), app.path(`@modules/swiper`)]);
   /**
    * Development server settings
    *

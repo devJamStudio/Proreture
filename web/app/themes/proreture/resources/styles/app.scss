@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import 'common/fonts';
+@import 'pages/frontpage';
+@import '~swiper/scss';
+@import '~swiper/scss/pagination';

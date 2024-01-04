@@ -1,5 +1,5 @@
-<header class="banner w-full   bg-opacity-80 z-20 fixed top-0">
-  <div class="mx-2 flex items-end justify-between flex-row w-full">
+<header class="banner w-full p-2  bg-opacity-80 z-20 fixed top-0">
+  <div class="flex items-end pr-1 pl-3 pt-3 justify-between flex-row w-full">
   <a class="brand" href="{{ home_url('/') }}">
     {!! $siteLogo !!}
   </a>

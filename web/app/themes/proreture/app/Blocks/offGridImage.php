@@ -5,9 +5,8 @@ namespace App\Blocks;
 use Log1x\AcfComposer\Block;
 use Roots\Acorn\Application;
 use StoutLogic\AcfBuilder\FieldsBuilder;
-use Roots\bundle;
 
-class Hero extends Block
+class OffGridImage extends Block
 {
     public function __construct(Application $app)
     {
@@ -16,21 +15,21 @@ class Hero extends Block
          *
          * @var string
          */
-        $this->name = __('Hero', 'sage');
+        $this->name = __('Off Grid Image', 'sage');
 
         /**
          * The block slug.
          *
          * @var string
          */
-        $this->slug = 'hero';
+        $this->slug = 'off-grid-image';
 
         /**
          * The block description.
          *
          * @var string
          */
-        $this->description = __('Hero block.', 'sage');
+        $this->description = __('A simple Off Grid Image block.', 'sage');
 
         /**
          * The block category.
@@ -120,7 +119,6 @@ class Hero extends Block
             [
                 'name' => 'light',
                 'label' => 'Light',
-
                 'isDefault' => true,
             ],
             [
@@ -135,10 +133,8 @@ class Hero extends Block
          * @var array
          */
         $this->example = [
-               'header' => 'header text',
-               'buttonLink' => '#',
-               'button' => 'Item one',
-               'background' => 'https://unsplash.com/photos/a-computer-monitor-sitting-on-top-of-a-desk-AHPjJe1a3CA',
+           'image' => 'url',
+           'text' => 'example text'
         ];
 
         parent::__construct($app);
@@ -152,10 +148,8 @@ class Hero extends Block
     public function with()
     {
         return [
-            'backgroundImage' => $this->backgroundImage(),
-            'button' => $this->button(),
-            'header' =>  $this->header(),
-            'buttonLink' => $this->buttonLink()
+            'image' => $this->offGridImage(),
+            'text'  => $this->text()
         ];
     }
 
@@ -166,55 +160,46 @@ class Hero extends Block
      */
     public function fields()
     {
-        $hero = new FieldsBuilder('hero');
+        $offGridImage = new FieldsBuilder('off_grid_image');
 
-        $hero
-            ->addText('header')
-            ->addText('button')
-            ->addUrl('buttonLink')
-            ->addImage('backgroundImage', [
-                'label' => 'Background Image',
+        $offGridImage
+            ->addWysiwyg('text')
+            ->addImage('OffGridImage', [
+                'label' => 'Off Grid Image',
                 'return_format' => 'id', // Make sure ACF returns the attachment ID
             ]);
 
-        return $hero->build();
+
+        return $offGridImage->build();
     }
 
     /**
-     * Return the background field.
+     * Return the items field.
      *
      * @return array
      */
-    public function backgroundImage()
+    public function offGridImage()
     {
-        $attachmentId = get_field('backgroundImage');
+        $attachmentId = get_field('OffGridImage');
 
         if ($attachmentId) {
-            $image_url = wp_get_attachment_image_url($attachmentId, 'full');
+            $image = wp_get_attachment_image(
+                $attachmentId,
+                'full', // Full-size image
+                false,
+                [
+                    'class' => 'w-full', // Add a class for styling
+                ]
+            );
 
-            return $image_url;
+            return $image;
         }
 
         return ''; // Return an empty string if there's no image.
     }
-
-
-    /**
-     * Return the button field.
-     *
-     * @return array
-     */
-    public function button()
+    public function text()
     {
-        return get_field('button') ?: $this->example['button'];
-    }
-    public function buttonLink()
-    {
-        return get_field('buttonLink') ?: $this->example['buttonLink'];
-    }
-    public function header()
-    {
-        return get_field('header') ?: $this->example['header'];
+        return get_field('text') ?: $this->example['text'];
     }
     /**
      * Assets to be enqueued when rendering the block.
@@ -223,5 +208,6 @@ class Hero extends Block
      */
     public function enqueue()
     {
+        //
     }
 }
