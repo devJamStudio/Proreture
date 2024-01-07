@@ -1,0 +1,35 @@
+@use 'colors';
+
+@mixin add-box-shadow($shadow) {
+  box-shadow: $shadow;
+}
+@mixin gradient($color) {
+  $startColor: map-get($color, 'start');
+  $middleColor: map-get($color, 'middle');
+  $endColor: map-get($color, 'end');
+
+  @if $startColor and $middleColor and $endColor {
+    background: -moz-linear-gradient(
+      16deg,
+      $startColor 28%,
+      $middleColor 59%,
+      $endColor 89%
+    );
+    background: -webkit-linear-gradient(
+      16deg,
+      $startColor 28%,
+      $middleColor 59%,
+      $endColor 89%
+    );
+    background: linear-gradient(
+      16deg,
+      $startColor 28%,
+      $middleColor 59%,
+      $endColor 89%
+    );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#{$startColor}", endColorstr="#{$endColor}", GradientType=1);
+  } @else {
+    // Handle the case where not all required color are provided.
+    @warn "Please provide 'start', 'middle', and 'end' color in the map.";
+  }
+}

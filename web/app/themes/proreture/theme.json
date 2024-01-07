@@ -28,12 +28,12 @@
           "slug": "transparent"
         },
         {
-          "color": "#000",
+          "color": "rgb(29,32,32)",
           "name": "Black",
           "slug": "black"
         },
         {
-          "color": "#fff",
+          "color": "#fafaf7",
           "name": "White",
           "slug": "white"
         },

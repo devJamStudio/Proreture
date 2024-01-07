@@ -20,7 +20,17 @@ domReady(async () => {
   });
 
   const swiperEl = document.querySelector('swiper-container');
-
+  //Navbar background
+  const navBar = document.querySelector('.navbar');
+  document.addEventListener('scroll', (event) => {
+    console.log('test');
+    if (window.pageYOffset > 0) {
+      console.log('test2');
+      navBar.classList.add('bg-gradient');
+    } else {
+      navBar.classList.remove('bg-gradient');
+    }
+  });
   // swiper parameters
   const swiperParams = {
     slidesPerView: 1,
@@ -53,6 +63,42 @@ domReady(async () => {
 
   // and now initialize it
   swiperEl.initialize();
+
+  // Counter script
+  const counter = document.getElementById('counter');
+  const counts = document.querySelectorAll('.number');
+  console.log(counts);
+
+  counts.forEach((count) => {
+    let maxValue = parseInt(count.textContent);
+    count.textContent = 0; // Initialize the text content to 0
+    let i = 0;
+    let delay = 10; // Adjust the delay (in milliseconds) as needed
+
+    function updateCount() {
+      count.textContent = i;
+      i++;
+      if (i <= maxValue && isInViewport(counter)) {
+        setTimeout(updateCount, delay);
+      }
+    }
+    document.addEventListener('scroll', (event) => {
+      if (isInViewport(counter)) {
+        updateCount();
+      }
+    });
+  });
+  //Check if i
+  function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <=
+        (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+  }
 });
 
 /**

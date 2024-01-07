@@ -1,0 +1,6 @@
+@use '../abstracts' as *;
+
+.section__container--image {
+  background: red;
+  @include gradient($blue-gradient);
+}

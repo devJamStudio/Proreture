@@ -1,6 +1,6 @@
 @include('sections.header')
 @include('sections.offcanvas')
-  <main id="main" class="main font-Manrope">
+  <main id="main" class="main">
     @yield('content')
   </main>
 

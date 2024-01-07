@@ -7,8 +7,36 @@
 }
 @font-face {
   font-display: swap;
-  font-family: 'Fjalla One';
+  font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: 400;
-  src: url('~@fonts/FjallaOne-Regular.ttf') format('ttf');
+  src: url('~@fonts/OpenSans-VariableFont_wdth.ttf') format('ttf');
+}
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  src: url('~@fonts/OpenSans-VariableFont_wdth.ttf') format('ttf');
+}
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  src: url('~@fonts/OpenSans-VariableFont_wdth.ttf') format('ttf');
+}
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  src: url('~@fonts/OpenSans-VariableFont_wdth.ttf') format('ttf');
+}
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  src: url('~@fonts/OpenSans-VariableFont_wdth.ttf') format('ttf');
 }

@@ -1,8 +1,8 @@
 <section class="{{ $block->classes }}">
-  <div class="flex flex-col md:flex-row min-h-[50vh]">
-    <div class="w-full md:w-1/2 bg-slate-700 items-center  justify-end flex relative overflow-hidden">
+  <div class="flex  section flex-col md:flex-row min-h-[50vh]">
+    <div class="w-full md:w-1/2 section__container--image items-center  justify-end flex relative overflow-hidden">
       @if($image)
-      <div class="image--wrapper  border-slate-900 border-t-[8px]  border-l-[8px] absolute bottom-0 right-0 w-11/12">
+      <div class="image--wrapper  border-black border-t-[8px]  border-l-[8px] absolute bottom-0 right-0 w-11/12">
       {!! $image !!}
       </div>
       @endif

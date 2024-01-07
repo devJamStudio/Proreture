@@ -1,4 +1,7 @@
 @import 'common/fonts';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 .interface-complementary-area {
   width: 661px;
 }

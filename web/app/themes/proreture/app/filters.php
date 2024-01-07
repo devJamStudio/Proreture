@@ -16,9 +16,16 @@ add_filter('excerpt_more', function () {
 });
 
 add_filter('nav_menu_css_class', function () {
-    $classes[] = 'text-blue-500 hover:text-blue-300 text-2xl text-center my-3';
+    $classes[] = 'text-white hover:text-slate-200 text-2xl text-center my-3';
     return $classes;
 });
+/**
+TODO: custom wordpress login
+
+add_filter('login_url', function () {
+    return home_url('/custom-login');
+});
+*/
 add_filter('acf/fields/wysiwyg/toolbars', function ($toolbars) {
 
     // Add a new toolbar called "Very Simple"

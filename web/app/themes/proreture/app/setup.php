@@ -16,6 +16,7 @@ use function Roots\bundle;
 add_action('wp_enqueue_scripts', function () {
     bundle('swiperBundle')->enqueue();
 }, 200);
+
 add_action('wp_enqueue_scripts', function () {
     bundle('app')->enqueue();
 }, 100);
@@ -62,12 +63,12 @@ add_action('after_setup_theme', function () {
 
     /**
      * Add Tailwind classes in editor
-    *
-    */
+    * Conflict with default styling in admin pages // leave it for now
+
     add_action('admin_enqueue_scripts', function () {
         bundle('app')->enqueue();
     }, 100);
-
+    */
     /**
      * Register the navigation menus.
      *

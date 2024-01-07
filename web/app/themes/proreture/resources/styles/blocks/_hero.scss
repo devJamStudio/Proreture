@@ -1,0 +1,90 @@
+@use '../abstracts' as *;
+#hero {
+  @include gradient($blue-gradient);
+}
+.wave {
+  position: absolute;
+  top: 0;
+  animation: wave 8s linear infinite;
+}
+
+.wave1 {
+  animation: wave1 10s linear infinite;
+}
+
+.wave2 {
+  animation: wave2 12s linear infinite;
+}
+
+@keyframes wave {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes wave1 {
+  0% {
+    transform: scaleY(1.2) translateX(0%);
+  }
+
+  100% {
+    transform: scaleY(1.2) translateX(100%);
+  }
+}
+
+@keyframes wave2 {
+  0% {
+    transform: scaleY(0.8) translateX(0%);
+  }
+
+  100% {
+    transform: scaleY(0.8) translateX(100%);
+  }
+}
+.wave3 {
+  position: absolute;
+  top: 0;
+  animation: wave 8s linear infinite;
+}
+
+.wave4 {
+  animation: wave1 10s linear infinite;
+}
+
+.wave5 {
+  animation: wave2 12s linear infinite;
+}
+
+@keyframes wave3 {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+@keyframes wave4 {
+  0% {
+    transform: scaleY(1.5) translateX(0%);
+  }
+
+  100% {
+    transform: scaleY(2) translateX(200%);
+  }
+}
+
+@keyframes wave5 {
+  0% {
+    transform: scaleY(0.8) translateX(0%);
+  }
+
+  100% {
+    transform: scaleY(1.5) translateX(200%);
+  }
+}
