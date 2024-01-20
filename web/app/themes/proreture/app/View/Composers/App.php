@@ -44,4 +44,10 @@ class App extends Composer
         $logo = wp_get_attachment_image_src($custom_logo_id, 'medium');
         return '<img class="w-48" src="' . esc_url($logo[0]) . '" alt="' . get_bloginfo('name') . '">';
     }
+    public function menuName($location)
+    {
+        $locations = get_nav_menu_locations(); //get all menu locations
+        $menu = wp_get_nav_menu_object($locations[$location]);
+        return $menu->name;
+    }
 }

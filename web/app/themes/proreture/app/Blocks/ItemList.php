@@ -5,21 +5,21 @@ namespace App\Blocks;
 use Log1x\AcfComposer\Block;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
-class SliderFront extends Block
+class ItemList extends Block
 {
     /**
      * The block name.
      *
      * @var string
      */
-    public $name = 'Slider Front';
+    public $name = 'Item List';
 
     /**
      * The block description.
      *
      * @var string
      */
-    public $description = 'A simple Slider Front block.';
+    public $description = 'A simple Item List block.';
 
     /**
      * The block category.
@@ -123,8 +123,11 @@ class SliderFront extends Block
      * @var array
      */
     public $example = [
-        'slides' => [],
-        'items' => [],
+        'items' => [
+            ['item' => 'Item one'],
+            ['item' => 'Item two'],
+            ['item' => 'Item three'],
+        ],
     ];
 
     /**
@@ -136,8 +139,6 @@ class SliderFront extends Block
     {
         return [
             'items' => $this->items(),
-            'slides' => $this->slides(),
-            'image' =>$this-> image(),
         ];
     }
 
@@ -148,19 +149,14 @@ class SliderFront extends Block
      */
     public function fields()
     {
-        $sliderFront = new FieldsBuilder('slider_front');
+        $itemList = new FieldsBuilder('item_list');
 
-        $sliderFront
-        ->addRepeater('slides')
-        ->addText('header')
-        ->addImage('image')
+        $itemList
             ->addRepeater('items')
-                ->addText('subheading')
-                ->addWysiwyg('text')
-            ->endRepeater()
-        ->endRepeater();
+                ->addText('item')
+            ->endRepeater();
 
-        return $sliderFront->build();
+        return $itemList->build();
     }
 
     /**
@@ -172,32 +168,7 @@ class SliderFront extends Block
     {
         return get_field('items') ?: $this->example['items'];
     }
-    public function slides()
-    {
-        return get_field('slides') ?: $this->example['slides'];
-    }
-    public function header()
-    {
-        return get_field('header') ?: $this->example['header'];
-    }
-    public function text()
-    {
-        return get_field('text') ?: $this->example['text'];
-    }
-    public function image()
-    {
-        // TO DO ALT
-        $attachmentId = get_field('image');
 
-
-        if ($attachmentId) {
-            $image  = wp_get_attachment_image($attachmentId, 'full');
-
-            return $image ;
-        }
-
-        return ''; // Return an empty string if there's no image.
-    }
     /**
      * Assets to be enqueued when rendering the block.
      *

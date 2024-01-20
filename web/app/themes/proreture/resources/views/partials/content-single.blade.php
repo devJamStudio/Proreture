@@ -2,6 +2,7 @@
   <header>
     <h1 class="p-name">
       {!! $title !!}
+      ???
     </h1>
 
     @include('partials.entry-meta')

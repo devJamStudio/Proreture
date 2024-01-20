@@ -16,7 +16,7 @@ add_filter('excerpt_more', function () {
 });
 
 add_filter('nav_menu_css_class', function () {
-    $classes[] = 'text-white hover:text-slate-200 text-2xl text-center my-3';
+    $classes[] = 'text-white hover:text-slate-200 text-xl text-center my-3';
     return $classes;
 });
 /**

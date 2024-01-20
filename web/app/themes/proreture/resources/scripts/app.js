@@ -1,12 +1,12 @@
 import domReady from '@roots/sage/client/dom-ready';
 import AOS from 'aos';
 import { register } from 'swiper/element/bundle';
-// init Swiper:
-/**
- * Application entrypoint
- */
+
 domReady(async () => {
+  // Register Swiper
   register();
+  AOS.init();
+  console.log(AOS);
   // Menu toggle
   const menuToggle = document.getElementById('menu-toggle');
   const offCanvas = document.getElementById('offcanvas-menu');
@@ -23,9 +23,7 @@ domReady(async () => {
   //Navbar background
   const navBar = document.querySelector('.navbar');
   document.addEventListener('scroll', (event) => {
-    console.log('test');
     if (window.pageYOffset > 0) {
-      console.log('test2');
       navBar.classList.add('bg-gradient');
     } else {
       navBar.classList.remove('bg-gradient');
@@ -43,17 +41,15 @@ domReady(async () => {
       },
     },
     on: {
-      init() {
-        // ...
-      },
+      init() {},
     },
     injectStyles: [
       ` :host .swiper-pagination-bullet{
         background: rgb(65 184 252);
         width:23px;height:23px;
       }
-        :host .swiper-pagination {row-gap:10px;margin-top:1rem;left:0;top:0;width:4%;display:flex;flex-direction:column;align-items:center}
-        :root {--swiper-theme-color: red;}
+        :host .swiper-pagination {bottom:0px; position:absolute;}
+
       `,
     ],
   };
@@ -67,28 +63,32 @@ domReady(async () => {
   // Counter script
   const counter = document.getElementById('counter');
   const counts = document.querySelectorAll('.number');
-  console.log(counts);
-
   counts.forEach((count) => {
     let maxValue = parseInt(count.textContent);
     count.textContent = 0; // Initialize the text content to 0
-    let i = 0;
     let delay = 10; // Adjust the delay (in milliseconds) as needed
 
-    function updateCount() {
-      count.textContent = i;
-      i++;
-      if (i <= maxValue && isInViewport(counter)) {
-        setTimeout(updateCount, delay);
-      }
-    }
-    document.addEventListener('scroll', (event) => {
+    const counterHandler = () => {
       if (isInViewport(counter)) {
+        let i = 0;
+        const updateCount = () => {
+          if (i <= maxValue) {
+            count.textContent = i;
+            i++;
+            setTimeout(updateCount, delay);
+          }
+        };
+
         updateCount();
+
+        // Remove the scroll event listener once animation is triggered
+        document.removeEventListener('scroll', counterHandler);
       }
-    });
+    };
+
+    document.addEventListener('scroll', counterHandler);
   });
-  //Check if i
+  //Check if item is in viewport
   function isInViewport(element) {
     const rect = element.getBoundingClientRect();
     return (

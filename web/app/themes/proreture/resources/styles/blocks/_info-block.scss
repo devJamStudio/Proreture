@@ -1,0 +1,13 @@
+@use '../abstracts' as *;
+
+.info-block h3 {
+  position: relative;
+}
+.info-block h3:after {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  left: 0%;
+  width: 66%;
+  border-bottom: 3px solid $blue;
+}
